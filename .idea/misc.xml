@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="temurin-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../../WeSeW-new/wesew" value="1476189898000" />
+        <entry key="$PROJECT_DIR$/../../projects/file-provider" value="1475062315000" />
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../../projects/relativity" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity-analytics-engine" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-emt" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-lang-id" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-lsi" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-nn" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-pipeline" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-rc" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-svm" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/a-tnd" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/c4-controllers" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/clowder" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/p-clowder" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/p-em" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/rae-build" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/rae-lib" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/rae-test" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../projects/relativity/relativity-analytics-engine" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ScalaSbtSettings">
+    <option name="customVMPath" />
+  </component>
+</project>
