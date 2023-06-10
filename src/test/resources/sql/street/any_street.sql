@@ -1,0 +1,1 @@
+insert into public.street (title) values ('any');

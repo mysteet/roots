@@ -1,0 +1,64 @@
+name: Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      docker:
+        image: docker:20.10.9-dind
+        env:
+          DOCKER_DRIVER: overlay
+          DOCKER_TLS_CERTDIR: ''
+        options: >-
+          --privileged
+          -v /var/run/docker.sock:/var/run/docker.sock
+          -v /tmp/docker:/certs/client
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Docker CLI
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            sudo apt-get update
+            sudo apt-get install -y docker-ce-cli
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'adopt'
+
+      - name: Build project
+        run: ./gradlew build
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        env:
+          AWS_REGION: eu-north-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          no-cache: true
+          tags: ${{ secrets.AWS_ECR_REPO }}/roots:latest
+
+      - name: Delete untagged images from ECR
+        run: |
+          aws ecr describe-images --repository-name roots --query 'join(`\n`, [].[imageDigest])' --output text | xargs -n1 -I {} aws ecr batch-delete-image --repository-name roots --image-ids imageDigest={}
+        env:
+          AWS_REGION: eu-north-1
