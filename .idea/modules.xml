@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/roots.iml" filepath="$PROJECT_DIR$/roots.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/vlad110kg.roots.main.iml" filepath="$PROJECT_DIR$/.idea/modules/vlad110kg.roots.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/vlad110kg.roots.test.iml" filepath="$PROJECT_DIR$/.idea/modules/vlad110kg.roots.test.iml" />
     </modules>
   </component>
