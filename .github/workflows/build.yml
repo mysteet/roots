@@ -55,7 +55,7 @@ jobs:
           context: .
           push: true
           no-cache: true
-          tags: ${{ secrets.AWS_ECR_REPO }}/roots:latest
+          tags: ${{ secrets.AWS_ECR_REPO }}:latest
 
       - name: Delete untagged images from ECR
         run: |
