@@ -1,6 +1,7 @@
 package vlad110kg.web.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +12,7 @@ import vlad110kg.web.api.map.AddressDto;
 
 @RestController
 @RequestMapping("/v1/street")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class StreetController {
 

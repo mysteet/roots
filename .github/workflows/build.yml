@@ -51,7 +51,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
         env:
-          AWS_REGION: eu-north-1
+          AWS_REGION: eu-central-1
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
@@ -62,9 +62,3 @@ jobs:
           push: true
           no-cache: true
           tags: ${{ secrets.AWS_ECR_REPO }}:latest
-
-      - name: Delete untagged images from ECR
-        run: |
-          aws ecr describe-images --repository-name roots --query 'join(`\n`, [].[imageDigest])' --output text | xargs -n1 -I {} aws ecr batch-delete-image --repository-name roots --image-ids imageDigest={}
-        env:
-          AWS_REGION: eu-north-1

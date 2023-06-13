@@ -28,7 +28,7 @@ public class OpenAiClient implements AiClient {
 
     public List<String> askAbout(AddressDto addressDto) {
         var template = String.format("""
-            Hello. I want to ask what do you know about the street %s in the %s,%s.
+            I want to ask what do you know about the street %s in the %s,%s.
             1-2 sentences about it's history. Up to 10 sentences about person it's named for.
             """, addressDto.getRoad(), addressDto.getCity(), addressDto.getCountry());
         var msg = new ChatMessage();
