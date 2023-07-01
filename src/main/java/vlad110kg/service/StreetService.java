@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import vlad110kg.entity.Story;
 import vlad110kg.entity.Street;
+import vlad110kg.filter.AddressFilter;
 import vlad110kg.repository.StoryRepository;
 import vlad110kg.repository.StreetRepository;
 import vlad110kg.web.api.ai.AiClient;
@@ -13,6 +14,8 @@ import vlad110kg.web.api.map.AddressDto;
 import vlad110kg.web.api.map.MapClient;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,12 +26,24 @@ public class StreetService implements IStreetService {
     private final AiClient aiClient;
     private final StreetRepository streetRepository;
     private final StoryRepository storyRepository;
+    private final List<AddressFilter> addressFilters;
 
     @Override
     @Transactional
     public StoryView makeStory(Double lat, Double lng) {
         var address = findAddress(lat, lng);
         log.info("found address {} by {}, {}", address, lat, lng);
+
+        return addressFilters.stream()
+            .map(f -> f.filter(address))
+            .filter(Optional::isPresent)
+            .findFirst()
+            .orElseGet(() -> Optional.of(getStoryView(address)))
+            .orElseThrow();
+    }
+
+    @NotNull
+    private StoryView getStoryView(AddressDto address) {
         var street = streetRepository
             .findByTitle(address.getRoad())
             .orElseGet(() -> {
