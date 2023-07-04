@@ -1,5 +1,6 @@
 package vlad110kg.filter;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import vlad110kg.service.StoryView;
 import vlad110kg.web.api.map.AddressDto;
@@ -7,6 +8,7 @@ import vlad110kg.web.api.map.AddressDto;
 import java.util.Optional;
 
 @Component
+@Order(10)
 public class NoRoadAddressFilter implements AddressFilter {
 
     @Override

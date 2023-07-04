@@ -1,0 +1,1 @@
+insert into public.forbidden (id, "key", "value") values (-1, 'gavno', 'aga');

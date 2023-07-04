@@ -1,0 +1,1 @@
+delete from public.story where street_id = 1001;

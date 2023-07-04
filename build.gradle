@@ -97,10 +97,3 @@ test.finalizedBy jacocoTestReport
 jar {
     enabled = false
 }
-
-sonarqube{
-    properties  {
-        property "sonar.projectName", "stork"
-        property "sonar.projectKey", "stork"
-    }
-}
